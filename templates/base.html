@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>ToDo</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a class="logo" href="/">ToDo</a>
+            <ul class="nav-links">
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+            <a href="#">LOGIN</a>
+        </div>
+    </nav>
+    {% block form %}
+        
+    {% endblock form %}
+</body>
+</html>

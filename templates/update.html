@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block form %}
+    <form action="/update/{{todo.sno}}" method="POST">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Task</label>
+          <input type="text" class="form-control" id="InputTask" name="title" value="{{todo.title}}" placeholder="Enter task">
+        </div>
+        <div class="form-group">
+          <label for="InputPassword">Description</label>
+          <input type="text" class="form-control" id="InputDescription" name="desc" value="{{todo.desc}}" placeholder="Description">
+        </div>
+        <button type="submit" class="submitBtn">Update</button>
+      </form>
+      <section id="data">
+        {% if allTodo|length==0 %}
+            <h3>No task found, add your task.</h3>
+        {% else %}
+        <table class="table" width="100%">
+            <col style="width:10%">
+            <col style="width:20%">
+            <col style="width:70%">
+            <thead>
+                <tr>
+                    <th>SNo</th>
+                    <th>Task</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in allTodo %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.description}}
+                        <a type="update" href="/update/{{todo.sno}}" class="operateBtn">update</a>
+                        <a type="delete" href="/delete/{{todo.sno}}" class="operateBtn">delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </section>
+{% endblock form %}
